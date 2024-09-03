@@ -1,5 +1,11 @@
 function get_message_data() {
-  return "Astaghfirullah."; // Placeholder for dynamic message content
+  var messages = [
+    "Astaghfirullah",
+    "Subhanallah",
+    "Allahu Akbar",
+    "La Ilaha Illallah",
+  ];
+  return messages[Math.floor(Math.random() * messages.length)];
 }
 
 function createPopup() {
