@@ -9,7 +9,6 @@ function get_message_data() {
 }
 
 function createPopup() {
-  // Remove existing popup if any
   const existingPopup = document.getElementById("Zekr");
   if (existingPopup) {
     existingPopup.remove();
@@ -17,7 +16,7 @@ function createPopup() {
 
   const popup = document.createElement("div");
   popup.id = "Zekr";
-  popup.className = "Zekr_Pink"; // Corrected to className
+  popup.className = "Zekr_Pink";
 
   popup.style = `
     position: fixed;
@@ -43,7 +42,6 @@ function createPopup() {
     cursor: pointer;
   `;
 
-  // Add content
   const title = "Zekr";
   const message = get_message_data();
 
@@ -56,7 +54,6 @@ function createPopup() {
 
   document.body.appendChild(popup);
 
-  // Remove the popup after 5 seconds if not clicked
   setTimeout(() => {
     if (popup.parentNode) {
       popup.remove();
@@ -64,9 +61,9 @@ function createPopup() {
   }, 5000);
 }
 
-// Listen for messages from the background script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "createPopup") {
     createPopup();
+    chrome.runtime.sendMessage({ action: "setIconPink" });
   }
 });
