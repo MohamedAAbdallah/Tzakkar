@@ -1,5 +1,7 @@
 # Tazakr
 
+![Tazakr Logo](src/icons/Green128.png)
+
 Tazakr is a Web extension designed to casually remind Muslims to seek Allah's forgiveness. It's a lightweight, fast, and easy-to-use tool that prioritizes your privacy and security.
 
 ## Table of Contents
