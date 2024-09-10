@@ -1,9 +1,18 @@
 function get_message_data() {
   var messages = [
-    "Astaghfirullah",
-    "Subhanallah",
-    "Allahu Akbar",
-    "La Ilaha Illallah",
+    "الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد",
+    "استغفر الله واتوب اليه",
+    "سبحان الله وبحمده",
+    "لا اله الا الله",
+    "الحمد لله",
+    "الله اكبر",
+    "سبحان الله",
+    "اللهم اني اسالك العفو والعافية",
+    "اللهم اني اسالك العلم النافع",
+    "اللهم اني اسالك الهدى والتقى والعفاف والغنى",
+    "اللهم اني اسالك الجنة واعوذ بك من النار",
+    "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ."
   ];
   return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -12,22 +21,26 @@ function createPopup() {
   const existingPopup = document.getElementById("Zekr");
   if (existingPopup) {
     existingPopup.remove();
-  }
+  }  
 
   const popup = document.createElement("div");
   popup.id = "Zekr";
   popup.className = "Zekr_Pink";
 
   popup.style = `
+    // @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
     position: fixed;
     bottom: 2%;
     right: 2%;
-    padding: 1.5rem 2rem; 
+    padding: 1rem 2rem; 
+
+    font-family: "Lalezar", system-ui !important;
+    font-weight: 600 !important; 
 
     color: #FFFFFF;
     background-color: #E897B4; /* Pink, can be made dynamic later */
     
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 
     font-family: Arial, sans-serif;
@@ -46,7 +59,6 @@ function createPopup() {
   const message = get_message_data();
 
   popup.innerHTML = `
-    <strong id="Zekr_Title" style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #4B2A43;">${title}</strong>
     <span id="Zekr_Message" style="font-size: 1rem; line-height: 1.5; color: #FFFFFF;">${message}</span>
   `;
 

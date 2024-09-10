@@ -1,3 +1,6 @@
+// Test mode variable
+let testMode = true; // Set to true to enable test mode (5 seconds interval)
+
 function changeIconTo(color) {
   const icons = {
     green: {
@@ -24,15 +27,7 @@ function changeIconTo(color) {
   }
 }
 
-// Example: Change icon color based on some event
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "setIconGreen") {
-    changeIconTo("green");
-  } else if (request.action === "setIconPink") {
-    changeIconTo("pink");
-  }
-});
-
+// Function to trigger the popup
 function triggerPopup() {
   // Query all tabs to send a message to the active tab
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -46,5 +41,14 @@ function triggerPopup() {
   });
 }
 
-// Set a fixed interval for triggering the popup
-setInterval(triggerPopup, 15000);
+// Function to set up the interval for triggering the popup
+let popupInterval;
+
+function setupInterval() {
+  clearInterval(popupInterval); // Clear any existing interval
+  const interval = testMode ? 5000 : 15000; // 5 seconds if test mode is enabled, 15 seconds otherwise
+  popupInterval = setInterval(triggerPopup, interval);
+}
+
+// Initialize the interval when the extension loads
+setupInterval();
