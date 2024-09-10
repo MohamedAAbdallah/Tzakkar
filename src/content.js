@@ -12,7 +12,7 @@ function get_message_data() {
     "اللهم اني اسالك الهدى والتقى والعفاف والغنى",
     "اللهم اني اسالك الجنة واعوذ بك من النار",
     "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
-    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ."
+    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ.",
   ];
   return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -21,7 +21,7 @@ function createPopup() {
   const existingPopup = document.getElementById("Zekr");
   if (existingPopup) {
     existingPopup.remove();
-  }  
+  }
 
   const popup = document.createElement("div");
   popup.id = "Zekr";
@@ -29,24 +29,30 @@ function createPopup() {
 
   popup.style = `
     // @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     position: fixed;
     bottom: 2%;
-    right: 2%;
-    padding: 1rem 2rem; 
+    right: 1%;
+    padding: 0.5rem 1rem; 
 
     font-family: "Lalezar", system-ui !important;
-    font-weight: 600 !important; 
+    font-weight: 600 !important;
 
     color: #FFFFFF;
-    background-color: #E897B4; /* Pink, can be made dynamic later */
+    background-color: #E897B4; /* TODO: Make Dynamic */
     
     border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 
     font-family: Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 1.3rem !important;
+
     max-width: 90%;
-    width: 20rem;
+    // width: 20rem;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -59,7 +65,7 @@ function createPopup() {
   const message = get_message_data();
 
   popup.innerHTML = `
-    <span id="Zekr_Message" style="font-size: 1rem; line-height: 1.5; color: #FFFFFF;">${message}</span>
+    <span id="Zekr_Message" style="color: #FFFFFF;">${message}</span>
   `;
 
   popup.onclick = () => popup.remove();
@@ -70,7 +76,7 @@ function createPopup() {
     if (popup.parentNode) {
       popup.remove();
     }
-  }, 5000);
+  }, 60000);
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {

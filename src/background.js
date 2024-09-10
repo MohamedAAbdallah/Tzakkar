@@ -1,5 +1,4 @@
-// Test mode variable
-let testMode = true; // Set to true to enable test mode (5 seconds interval)
+let testMode = true;
 
 function changeIconTo(color) {
   const icons = {
@@ -17,7 +16,6 @@ function changeIconTo(color) {
     },
   };
 
-  // Select icons based on the chosen color
   const selectedIcons = icons[color];
 
   if (selectedIcons) {
@@ -27,12 +25,9 @@ function changeIconTo(color) {
   }
 }
 
-// Function to trigger the popup
 function triggerPopup() {
-  // Query all tabs to send a message to the active tab
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     try {
-      // Send a message to the active tab
       const activeTab = tabs[0];
       chrome.tabs.sendMessage(activeTab.id, { action: "createPopup" });
     } catch (error) {
@@ -41,14 +36,12 @@ function triggerPopup() {
   });
 }
 
-// Function to set up the interval for triggering the popup
 let popupInterval;
 
 function setupInterval() {
-  clearInterval(popupInterval); // Clear any existing interval
-  const interval = testMode ? 5000 : 15000; // 5 seconds if test mode is enabled, 15 seconds otherwise
+  clearInterval(popupInterval);
+  const interval = testMode ? 10000 : 300000;
   popupInterval = setInterval(triggerPopup, interval);
 }
 
-// Initialize the interval when the extension loads
 setupInterval();
