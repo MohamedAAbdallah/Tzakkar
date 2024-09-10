@@ -27,38 +27,29 @@ function createPopup() {
   popup.id = "Zekr";
   popup.className = "Zekr_Pink";
 
+  // Apply CSS styles directly
   popup.style = `
-    // @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: fixed;
     bottom: 2%;
     right: 1%;
-    padding: 0.5rem 1rem; 
-
+    padding: 0.5rem 1rem;
     font-family: "Lalezar", system-ui !important;
     font-weight: 600 !important;
-
     color: #FFFFFF;
-    background-color: #E897B4; /* TODO: Make Dynamic */
-    
+    background-color: #E897B4;
     border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-
-    font-family: Arial, sans-serif;
     font-size: 1.3rem !important;
-
     max-width: 90%;
-    // width: 20rem;
-    display: flex;
     flex-direction: column;
     align-items: start;
-
     z-index: 2147483647;
     cursor: pointer;
+    transform: translateY(100%); /* Start off-screen */
+    animation: slide-up 0.5s ease-out forwards; /* Animation properties */
   `;
 
   const title = "Zekr";
@@ -71,6 +62,20 @@ function createPopup() {
   popup.onclick = () => popup.remove();
 
   document.body.appendChild(popup);
+
+  // Define keyframe animation in a <style> tag
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes slide-up {
+      from {
+        transform: translateY(100%); /* Start from below */
+      }
+      to {
+        transform: translateY(0); /* End at the bottom */
+      }
+    }
+  `;
+  document.head.appendChild(style);
 
   setTimeout(() => {
     if (popup.parentNode) {
