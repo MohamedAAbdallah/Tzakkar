@@ -1,74 +1,52 @@
-# CC BY-NC-SA 4.0 International License
+# GNU GENERAL PUBLIC LICENSE
 
-## Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
+## Version 3, 29 June 2007
 
-### By: Creative Commons Corporation
+### By: Free Software Foundation, Inc.
 
 ### Full License Terms:
 
-**You are free to:**
+**Preamble**
 
-- **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material
+The GNU General Public License is a free software license that guarantees end users the freedom to run, study, share, and modify the software. This license is intended to ensure that software remains free and open for everyone.
 
-**Under the following terms:**
+### 1. Definitions
 
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-- **NonCommercial** — You may not use the material for commercial purposes.
-- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+- **This License** refers to the GNU General Public License.
+- **The Program** refers to any software covered by this License.
+- **You** refers to the licensee, or the person or entity using the software.
+- **Source Code** means the preferred form of the Program for making modifications.
+- **Object Code** means any non-source form of the Program.
+- **Derivative Works** means works based upon the Program or upon the Program and other preexisting works.
 
-**No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+### 2. Basic Permissions
 
-### Notices:
+- **You can**: Run the Program for any purpose.
+- **You can**: Study and modify the Program. Access to the source code is a precondition for this.
+- **You can**: Redistribute copies of the original Program and your modifications, ensuring that others also have access to the source code.
 
-- You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an exception or limitation.
-- No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
+### 3. Copyleft
 
-### Full License Text:
+- **You must**: Distribute the source code of derivative works under the same license as the original Program.
+- **You must**: Include a copy of this license with any distribution of the Program or derivative works.
 
-#### 1. Definitions
+### 4. Application of this License
 
-- **Adapt** means to make derivative works, including translations and adaptations.
-- **Commercial** means intended for or directed towards commercial advantage or monetary compensation.
-- **Material** means the work and any adaptations of it.
-- **Public Domain** means a work that is free of all copyright restrictions.
-- **Share** means to make material available to the public.
+- **This License applies** to any software that is derived from or based on the Program.
+- **You must**: Use the GPL License or a compatible license for any derivative works.
 
-#### 2. Scope
+### 5. No Warranty
 
-- You may use, copy, modify, and distribute the material under the terms of this license.
-- The material is provided on an “as-is” basis without any warranties.
+- **The Program is distributed** without any warranty. The developer is not responsible for any damages arising from the use of the Program.
 
-#### 3. Attribution
+### 6. Additional Terms
 
-- You must credit the original creator(s) of the material in the manner specified by the author or licensor.
-- You must provide a link to the license.
-- You must indicate if you made changes to the material.
-- You may not use the material in any way that suggests endorsement by the original creator or licensor.
+- **No Additional Restrictions**: You may not impose additional restrictions on the rights granted by this License.
 
-#### 4. NonCommercial
+### 7. Termination
 
-- You may not use the material for commercial purposes.
-- Commercial purposes include any use that is primarily intended for or directed towards commercial advantage or monetary compensation.
+- **Termination of License**: The License is terminated automatically if you fail to comply with its terms.
 
-#### 5. ShareAlike
-
-- If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
-- You must include a copy of this license with any distribution of the material.
-
-#### 6. No Additional Restrictions
-
-- You may not impose any additional restrictions on the exercise of the rights granted by this license.
-- You must not apply technological measures that restrict others from using the material under the terms of this license.
-
-#### 7. Public Domain
-
-- This license does not affect rights that are in the public domain.
-
-#### 8. No Warranties
-
-- The material is licensed “as-is” without any warranties, including implied warranties of merchantability or fitness for a particular purpose.
-
-For more details about this license, please visit [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+For more details about this license, please visit [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
 
 ---

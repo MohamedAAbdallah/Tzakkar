@@ -6,7 +6,7 @@
 
 ## Acknowledgements
 
-A special acknowledgment goes to **Rana Abdelsalam (Software Engineer)**, the co-author of Tazakr, whose expertise and dedication were vital to the development of this extension. Her contributions have significantly shaped Tazakr to be the effective tool it is today.
+A special acknowledgment goes to **Rana Abdelsalam (Software Engineer)**, the co-author of Tazakr, whose expertise and dedication were vital to the development of this extension. Her contributions have significantly shaped Tazakr to be the effective tool it is today. May Allah grant her Paradise and make her work on this project a part of her good deed.
 
 ## Features
 
@@ -39,29 +39,40 @@ To install the development version, follow these steps:
 
 Now, you can start using Tazakr in its development form.
 
-## License
+## Usage
 
-This project is licensed under the **Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**. You are free to use, modify, and distribute the software, provided that you give appropriate credit to **Mohamed A. Abdallah**.
-
-For more information, see the full [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+After installation, Tazakr will display a small popup with a message in the bottom right corner of your browser. The extension operates on all pages but does not access or modify any website data.
 
 ## Contributing
 
-We welcome contributions to Tazakr! Here’s how you can help:
+We welcome all contributions to Tazakr! Here’s how you can help:
 
 1. **Fork the Repository**: Create a fork of the repository to your GitHub account.
 2. **Create a Branch**: Make a new branch with a descriptive name (e.g., `feature/your-feature-name`).
 3. **Commit Your Changes**: Write clear, concise, and well-documented code.
 4. **Submit a Pull Request**: Open a Pull Request with a clear description of your changes.
 
-Please ensure your contributions adhere to the project’s coding standards.
+Please read our [Contributing Guidelines](CONTRIBUTING.md) and adhere to our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Contact
+## Code of Conduct
 
-For any questions, feedback, or support, please contact:
+We are committed to providing a welcoming and inclusive environment for everyone. All participants are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-- **GitHub**: [MohamedAAbdallah](https://github.com/MohamedAAbdallah)
+To report any violations, please create a GitHub issue or contact us via email at [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com).
+
+## License
+
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. You are free to use, modify, and distribute the software, provided that you comply with the terms of this license.
+
+For more information, see the full [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
+
+## **Contact**
+
+For any questions, suggestions, or issues, please feel free to reach out:
+
+- **Author**: Mohamed A. Abdallah
 - **Email**: [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com)
+- **GitHub**: [MohamedAAbdallah](https://github.com/MohamedAAbdallah)
 
 Thank you for supporting Tazakr!
 
