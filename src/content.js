@@ -41,7 +41,7 @@ function createPopup() {
     color: #FFFFFF;
     background-color: #E897B4;
     border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Shadow only below the popup */
     font-size: 1.3rem !important;
     max-width: 90%;
     flex-direction: column;
@@ -82,7 +82,7 @@ function createPopup() {
 
       width: 0;
       height: 0;
-      
+
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-top: 10px solid #E897B4; /* Match the popup background color */
