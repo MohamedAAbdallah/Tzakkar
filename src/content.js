@@ -12,7 +12,7 @@ function get_message_data() {
     "اللهم اني اسالك الهدى والتقى والعفاف والغنى",
     "اللهم اني اسالك الجنة واعوذ بك من النار",
     "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
-    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ.",
+    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
   ];
   return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -41,7 +41,7 @@ function createPopup() {
     color: #FFFFFF;
     background-color: #E897B4;
     border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
     font-size: 1.3rem !important;
     max-width: 90%;
     flex-direction: column;
@@ -57,13 +57,14 @@ function createPopup() {
 
   popup.innerHTML = `
     <span id="Zekr_Message" style="color: #FFFFFF;">${message}</span>
+    <div class="arrow"></div> <!-- Triangle arrow -->
   `;
 
   popup.onclick = () => popup.remove();
 
   document.body.appendChild(popup);
 
-  // Define keyframe animation in a <style> tag
+  // Define keyframe animation and triangle styles in a <style> tag
   const style = document.createElement("style");
   style.textContent = `
     @keyframes slide-up {
@@ -73,6 +74,20 @@ function createPopup() {
       to {
         transform: translateY(0); /* End at the bottom */
       }
+    }
+    .arrow {
+      position: absolute;
+      bottom: -4px; /* Position the arrow below the popup */
+      right: 10px; /* Align arrow with right edge */
+
+      width: 0;
+      height: 0;
+      
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #E897B4; /* Match the popup background color */
+
+      rotate: -30deg;
     }
   `;
   document.head.appendChild(style);
