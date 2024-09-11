@@ -2,54 +2,67 @@
 
 ![Tazakr Logo](src/icons/Green128.png)
 
-Tazakr is a Web extension designed to casually remind Muslims to seek Allah's forgiveness. It's a lightweight, fast, and easy-to-use tool that prioritizes your privacy and security.
-
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [License](#license)
-- [Contributing](#contributing)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
-
-## Features
-
-- 🌟 **Get Closer to Allah**: A reminder to seek Allah's forgiveness.
-- ⚡ **Lightweight and Fast**: Efficient and quick to use.
-- 🧩 **Very Easy to Use**: Simple and intuitive interface.
-- 🔒 **Secure and Privacy-Focused**: Respects your privacy and ensures security.
-
-## Installation
-
-_Installation instructions will be provided soon._
-
-## License
-
-This project is licensed under the **Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**. You are free to use, modify, and distribute the software, but you must give appropriate credit to Mohamed A. Abdallah.
-
-For more information about this license, please refer to [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-## Contributing
-
-We welcome contributions to this project. Please follow these guidelines for contributing:
-
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Commit your changes and push to your fork.
-4. Open a pull request with a clear description of your changes.
-
-Please ensure that your code adheres to the project's coding standards and includes appropriate tests.
-
-## Contact
-
-For any questions or support, you can reach out via:
-
-- **GitHub**: [Your GitHub Profile](https://github.com/MohamedAAbdallah)
-- **Email**: eng.mohamed.a.abdallah@gmail.com
+**Tazakr** is a web extension designed to gently remind Muslims to seek Allah's forgiveness throughout the day. Lightweight, fast, and privacy-focused, Tazakr offers a simple way to stay mindful and connected to your faith while browsing.
 
 ## Acknowledgements
 
-Special thanks to Rana Abdelsalam (Software Engineer) for their contribution as a co-author.
+A special acknowledgment goes to **Rana Abdelsalam (Software Engineer)**, the co-author of Tazakr, whose expertise and dedication were vital to the development of this extension. Her contributions have significantly shaped Tazakr to be the effective tool it is today.
+
+## Features
+
+- 🌟 **Get Closer to Allah**: Provides regular reminders to ask for Allah's forgiveness.
+- ⚡ **Lightweight and Fast**: Designed for efficiency and speed.
+- 🧩 **User-Friendly**: Simple and intuitive interface.
+- 🔒 **Privacy-Focused**: No data collection; all settings are stored locally.
+
+## Installation
+
+### Stable Release
+
+- **From Chrome Web Store**: Available Soon.
+- **From Microsoft Edge Add-ons**: Available Soon.
+
+### Development Release
+
+To install the development version, follow these steps:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/MohamedAAbdallah/Tazakr.git
+   ```
+2. **Turn on Developer Mode**:
+   - Go to the Chrome or Edge extensions page (`chrome://extensions/` or `edge://extensions/`).
+   - Enable "Developer Mode" (usually found in the top right corner).
+
+3. **Install Unpacked Extension**:
+   - Click on "Load unpacked" and select the cloned repository's folder.
+
+Now, you can start using Tazakr in its development form.
+
+## License
+
+This project is licensed under the **Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**. You are free to use, modify, and distribute the software, provided that you give appropriate credit to **Mohamed A. Abdallah**.
+
+For more information, see the full [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+## Contributing
+
+We welcome contributions to Tazakr! Here’s how you can help:
+
+1. **Fork the Repository**: Create a fork of the repository to your GitHub account.
+2. **Create a Branch**: Make a new branch with a descriptive name (e.g., `feature/your-feature-name`).
+3. **Commit Your Changes**: Write clear, concise, and well-documented code.
+4. **Submit a Pull Request**: Open a Pull Request with a clear description of your changes.
+
+Please ensure your contributions adhere to the project’s coding standards.
+
+## Contact
+
+For any questions, feedback, or support, please contact:
+
+- **GitHub**: [MohamedAAbdallah](https://github.com/MohamedAAbdallah)
+- **Email**: [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com)
+
+Thank you for supporting Tazakr!
 
 ---
