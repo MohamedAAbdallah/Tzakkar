@@ -2,7 +2,7 @@
 
 ### **Our Commitment**
 
-As contributors and maintainers of the **Tazakr** project, we are committed to fostering an open, welcoming, and inclusive environment. We strive to make participation in our project a positive experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, experience level, nationality, personal appearance, race, or religion.
+As contributors and maintainers of the **Tzakkar** project, we are committed to fostering an open, welcoming, and inclusive environment. We strive to make participation in our project a positive experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, experience level, nationality, personal appearance, race, or religion.
 
 ### **Standards of Conduct**
 
@@ -24,7 +24,7 @@ We expect all participants in our community to adhere to the following standards
 
 ### **Reporting Violations**
 
-If you witness or experience any abusive, harassing, or otherwise unacceptable behavior, please report it by [opening an issue on GitHub](https://github.com/MohamedAAbdallah/Tazakr/issues) or by contacting the project team at [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com). All reports will be reviewed and investigated promptly, with actions taken as deemed necessary and appropriate.
+If you witness or experience any abusive, harassing, or otherwise unacceptable behavior, please report it by [opening an issue on GitHub](https://github.com/MohamedAAbdallah/Tzakkar/issues) or by contacting the project team at [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com). All reports will be reviewed and investigated promptly, with actions taken as deemed necessary and appropriate.
 
 ### **Enforcement**
 

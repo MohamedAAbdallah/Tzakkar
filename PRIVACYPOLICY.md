@@ -1,32 +1,32 @@
-# **Tazakr Privacy Policy**
+# **Tzakkar Privacy Policy**
 
 **Effective Date:** 2024
 
-Tazakr is committed to respecting your privacy. This Privacy Policy explains how Tazakr handles your data to ensure a secure and private experience for all users.
+Tzakkar is committed to respecting your privacy. This Privacy Policy explains how Tzakkar handles your data to ensure a secure and private experience for all users.
 
 ## **Data Collection**
 
-Tazakr does **not** collect any user data. The extension operates entirely within your browser, providing reminders and messages without accessing or collecting any personal information, browsing history, or any other data.
+Tzakkar does **not** collect any user data. The extension operates entirely within your browser, providing reminders and messages without accessing or collecting any personal information, browsing history, or any other data.
 
 ## **Data Storage**
 
-Tazakr stores user preferences (such as language settings) locally on your device. This information is kept in the browser's local storage and is never transmitted to any external servers.
+Tzakkar stores user preferences (such as language settings) locally on your device. This information is kept in the browser's local storage and is never transmitted to any external servers.
 
 ## **Data Sharing**
 
-Tazakr does **not** share any data with third parties. Since no data is collected from users, there is nothing to share.
+Tzakkar does **not** share any data with third parties. Since no data is collected from users, there is nothing to share.
 
 ## **Cookies and Tracking**
 
-Tazakr does **not** use cookies or tracking technologies. The extension does not monitor user activity, gather analytics data, or track user behavior across different websites.
+Tzakkar does **not** use cookies or tracking technologies. The extension does not monitor user activity, gather analytics data, or track user behavior across different websites.
 
 ## **User Consent and Control**
 
-As Tazakr does not collect, store, or share any personal data, no user consent is required regarding data collection. Users have full control over the extension’s behavior and settings, which are stored only locally in their browser.
+As Tzakkar does not collect, store, or share any personal data, no user consent is required regarding data collection. Users have full control over the extension’s behavior and settings, which are stored only locally in their browser.
 
 ## **Changes to This Privacy Policy**
 
-Tazakr reserves the right to modify this Privacy Policy at any time. Any changes will be posted on the extension's repository, and the effective date will be updated accordingly.
+Tzakkar reserves the right to modify this Privacy Policy at any time. Any changes will be posted on the extension's repository, and the effective date will be updated accordingly.
 
 ## **Contact Information**
 
@@ -34,6 +34,6 @@ If you have any questions or concerns about this Privacy Policy, please contact 
 
 - **Email**: [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com)
 
-Thank you for using Tazakr!
+Thank you for using Tzakkar!
 
 ---

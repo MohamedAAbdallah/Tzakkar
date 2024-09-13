@@ -1,12 +1,12 @@
-# Tazakr
+# Tzakkar
 
-![Tazakr Logo](src/icons/Green128.png)
+![Tzakkar Logo](src/icons/Green128.png)
 
-**Tazakr** is a web extension designed to gently remind Muslims to seek Allah's forgiveness throughout the day. Lightweight, fast, and privacy-focused, Tazakr offers a simple way to stay mindful and connected to your faith while browsing.
+**Tzakkar** is a web extension designed to gently remind Muslims to seek Allah's forgiveness throughout the day. Lightweight, fast, and privacy-focused, Tzakkar offers a simple way to stay mindful and connected to your faith while browsing.
 
 ## Acknowledgements
 
-A special acknowledgment goes to **Rana Abdelsalam (Software Engineer)**, the co-author of Tazakr, whose expertise and dedication were vital to the development of this extension. Her contributions have significantly shaped Tazakr to be the effective tool it is today. May Allah grant her Paradise and make her work on this project a part of her good deed.
+A special acknowledgment goes to **Rana Abdelsalam (Software Engineer)**, the co-author of Tzakkar, whose expertise and dedication were vital to the development of this extension. Her contributions have significantly shaped Tzakkar to be the effective tool it is today. May Allah grant her Paradise and make her work on this project a part of her good deed.
 
 ## Features
 
@@ -28,7 +28,7 @@ To install the development version, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/MohamedAAbdallah/Tazakr.git
+   git clone https://github.com/MohamedAAbdallah/Tzakkar.git
    ```
 2. **Turn on Developer Mode**:
    - Go to the Chrome or Edge extensions page (`chrome://extensions/` or `edge://extensions/`).
@@ -37,15 +37,15 @@ To install the development version, follow these steps:
 3. **Install Unpacked Extension**:
    - Click on "Load unpacked" and select the cloned repository's folder.
 
-Now, you can start using Tazakr in its development form.
+Now, you can start using Tzakkar in its development form.
 
 ## Usage
 
-After installation, Tazakr will display a small popup with a message in the bottom right corner of your browser. The extension operates on all pages but does not access or modify any website data.
+After installation, Tzakkar will display a small popup with a message in the bottom right corner of your browser. The extension operates on all pages but does not access or modify any website data.
 
 ## Contributing
 
-We welcome all contributions to Tazakr! Here’s how you can help:
+We welcome all contributions to Tzakkar! Here’s how you can help:
 
 1. **Fork the Repository**: Create a fork of the repository to your GitHub account.
 2. **Create a Branch**: Make a new branch with a descriptive name (e.g., `feature/your-feature-name`).
@@ -74,6 +74,6 @@ For any questions, suggestions, or issues, please feel free to reach out:
 - **Email**: [eng.mohamed.a.abdallah@gmail.com](mailto:eng.mohamed.a.abdallah@gmail.com)
 - **GitHub**: [MohamedAAbdallah](https://github.com/MohamedAAbdallah)
 
-Thank you for supporting Tazakr!
+Thank you for supporting Tzakkar!
 
 ---

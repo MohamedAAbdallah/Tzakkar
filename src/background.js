@@ -31,7 +31,7 @@ function triggerPopup() {
       const activeTab = tabs[0];
       chrome.tabs.sendMessage(activeTab.id, { action: "createPopup" });
     } catch (error) {
-      console.log("Tazakr | Error sending message to active tab:", error);
+      console.log("Tzakkar | Error sending message to active tab:", error);
     }
   });
 }
