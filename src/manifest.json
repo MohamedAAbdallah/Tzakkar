@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Tzakkar",
   "description": "A reminder for Muslims to ask for Allah's forgiveness.",
-  "version": "0.0.0.4",
-  "version_name": "0.0.0.4 DEV",
+  "version": "0.0.0.5",
+  "version_name": "0.0.0.5 DEV",
   "author": "mohamednow25@gmail.com",
   "minimum_chrome_version": "47",
   "incognito": "not_allowed",
@@ -15,11 +15,6 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
-      "run_at": "document_idle"
-    },
-    {
-      "matches": ["<all_urls>"],
-      "js": ["font.css"],
       "run_at": "document_idle"
     }
   ],
