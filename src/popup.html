@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Settings</title>
+    <style>
+      body {
+        font-family: "Lalezar", system-ui;
+        padding: 10px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Settings</h3>
+    <label for="interval">Popup Interval (ms):</label>
+    <input type="number" id="interval" min="10000" /><br />
+
+    <label for="color">Icon Color:</label>
+    <select id="color">
+      <option value="pink">Pink</option>
+      <option value="green">Green</option></select
+    ><br /><br />
+
+    <button id="saveSettings">Save</button>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

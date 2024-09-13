@@ -17,7 +17,7 @@ function get_message_data() {
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
-function createPopup() {
+function createPopup(color) {
   const existingPopup = document.getElementById("Zekr");
   if (existingPopup) {
     existingPopup.remove();
@@ -25,9 +25,14 @@ function createPopup() {
 
   const popup = document.createElement("div");
   popup.id = "Zekr";
-  popup.className = "Zekr_Pink";
+  popup.className = "Zekr";
 
-  // Apply CSS styles directly
+  var css_code = `#04B045`;
+
+  if (color === "pink") {
+    css_code = `#E897B4`;
+  }
+
   popup.style = `
     display: flex;
     justify-content: center;
@@ -39,17 +44,17 @@ function createPopup() {
     font-family: "Lalezar", system-ui !important;
     font-weight: 600 !important;
     color: #FFFFFF;
-    background-color: #E897B4;
+    background-color: ${css_code};
     border-radius: 1.5rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Shadow only below the popup */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     font-size: 1.3rem !important;
     max-width: 90%;
     flex-direction: column;
     align-items: start;
     z-index: 2147483647;
     cursor: pointer;
-    transform: translateY(100%); /* Start off-screen */
-    animation: slide-up 0.5s ease-out forwards; /* Animation properties */
+    transform: translateY(100%);
+    animation: slide-up 0.5s ease-out forwards;
   `;
 
   const title = "Zekr";
@@ -64,28 +69,27 @@ function createPopup() {
 
   document.body.appendChild(popup);
 
-  // Define keyframe animation and triangle styles in a <style> tag
   const style = document.createElement("style");
   style.textContent = `
     @keyframes slide-up {
       from {
-        transform: translateY(100%); /* Start from below */
+        transform: translateY(100%);
       }
       to {
-        transform: translateY(0); /* End at the bottom */
+        transform: translateY(0);
       }
     }
     .arrow {
       position: absolute;
-      bottom: -4px; /* Position the arrow below the popup */
-      right: 10px; /* Align arrow with right edge */
+      bottom: -4px;
+      right: 10px;
 
       width: 0;
       height: 0;
 
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-top: 10px solid #E897B4; /* Match the popup background color */
+      border-top: 10px solid ${css_code};
 
       rotate: -30deg;
     }
@@ -100,8 +104,9 @@ function createPopup() {
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "createPopup") {
-    createPopup();
-    chrome.runtime.sendMessage({ action: "setIconPink" });
+  if (request.action === "createPopupGreen") {
+    createPopup("green");
+  } else {
+    createPopup("pink");
   }
 });

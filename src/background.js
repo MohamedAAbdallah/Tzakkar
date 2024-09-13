@@ -1,5 +1,3 @@
-let testMode = true;
-
 function changeIconTo(color) {
   const icons = {
     green: {
@@ -22,26 +20,64 @@ function changeIconTo(color) {
     chrome.action.setIcon({
       path: selectedIcons,
     });
+  } else {
+    console.error("Invalid color for icon change: ", color);
   }
 }
 
-function triggerPopup() {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    try {
-      const activeTab = tabs[0];
-      chrome.tabs.sendMessage(activeTab.id, { action: "createPopup" });
-    } catch (error) {
-      console.log("Tzakkar | Error sending message to active tab:", error);
-    }
+const defaultSettings = {
+  interval: 300000,
+  color: "green",
+};
+
+function loadSettings(callback) {
+  chrome.storage.local.get("settings", (data) => {
+    const settings = data.settings || defaultSettings;
+    callback(settings);
   });
+}
+
+function saveSettings(settings) {
+  chrome.storage.local.set({ settings });
 }
 
 let popupInterval;
 
-function setupInterval() {
+function triggerPopup() {
+  chrome.storage.local.get("settings", (data) => {
+    const settings = data.settings || { color: "green" };
+
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      try {
+        const activeTab = tabs[0];
+        let actionType =
+          settings.color === "green" ? "createPopupGreen" : "createPopupPink";
+
+        chrome.tabs.sendMessage(activeTab.id, {
+          action: actionType,
+        });
+      } catch (error) {
+        console.log("Tzakkar | Error sending message to active tab:", error);
+      }
+    });
+  });
+}
+
+function setupInterval(interval) {
   clearInterval(popupInterval);
-  const interval = testMode ? 10000 : 300000;
   popupInterval = setInterval(triggerPopup, interval);
 }
 
-setupInterval();
+loadSettings((settings) => {
+  changeIconTo(settings.color);
+  setupInterval(1 == 1 ? 10000 : settings.interval);
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "updateSettings") {
+    const settings = request.settings;
+    saveSettings(settings);
+    changeIconTo(settings.color);
+    setupInterval(1 == 1 ? 10000 : settings.interval);
+  }
+});
