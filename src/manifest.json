@@ -19,7 +19,7 @@
     },
     {
       "matches": ["<all_urls>"],
-      "js": ["font.css"],
+      "css": ["font.css"],
       "run_at": "document_idle"
     }
   ],
