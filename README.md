@@ -1,6 +1,6 @@
 # Tzakkar
 
-![Tzakkar Logo](logos.gif)
+<img src="logos.gif" width="200">
 
 **Tzakkar** is a web extension designed to gently remind Muslims to seek Allah's forgiveness throughout the day. Lightweight, fast, and privacy-focused, Tzakkar offers a simple way to stay mindful and connected to your faith while browsing.
 
