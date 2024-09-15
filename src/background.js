@@ -70,7 +70,7 @@ function setupInterval(interval) {
 
 loadSettings((settings) => {
   changeIconTo(settings.color);
-  setupInterval(1 == 1 ? 10000 : settings.interval);
+  setupInterval(settings.interval);
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -78,6 +78,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const settings = request.settings;
     saveSettings(settings);
     changeIconTo(settings.color);
-    setupInterval(1 == 1 ? 10000 : settings.interval);
+    setupInterval(settings.interval);
   }
 });
