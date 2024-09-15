@@ -50,14 +50,13 @@ function triggerPopup() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       try {
         const activeTab = tabs[0];
-        let actionType =
-          settings.theme === "green" ? "createPopupGreen" : "createPopupPink";
 
         chrome.tabs.sendMessage(activeTab.id, {
-          action: actionType,
+          action: "createPopup",
+          settings: settings,
         });
       } catch (error) {
-        console.log("Tzakkar | Error sending message to active tab:", error);
+        console.error("Tzakkar | Error sending message to active tab: ", error);
       }
     });
   });

@@ -17,7 +17,7 @@ function get_message_data() {
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
-function createPopup(theme) {
+function createPopup(settings) {
   const existingPopup = document.getElementById("Zekr");
   if (existingPopup) {
     existingPopup.remove();
@@ -29,7 +29,7 @@ function createPopup(theme) {
 
   var css_code = `#04B045`;
 
-  if (theme === "pink") {
+  if (settings.theme === "pink") {
     css_code = `#E897B4`;
   }
 
@@ -113,9 +113,7 @@ function createPopup(theme) {
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "createPopupGreen") {
-    createPopup("green");
-  } else {
-    createPopup("pink");
+  if (request.action === "createPopup") {
+    createPopup(request.settings);
   }
 });
