@@ -1,16 +1,16 @@
 function changeIconTo(theme) {
   const icons = {
     green: {
-      16: "icons/Green16.png",
-      32: "icons/Green32.png",
-      48: "icons/Green48.png",
-      128: "icons/Green128.png",
+      16: "icons/Green/16.png",
+      32: "icons/Green/32.png",
+      48: "icons/Green/48.png",
+      128: "icons/Green/128.png",
     },
     pink: {
-      16: "icons/Pink16.png",
-      32: "icons/Pink32.png",
-      48: "icons/Pink48.png",
-      128: "icons/Pink128.png",
+      16: "icons/Pink/16.png",
+      32: "icons/Pink/32.png",
+      48: "icons/Pink/48.png",
+      128: "icons/Pink/128.png",
     },
   };
 

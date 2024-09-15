@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Tzakkar",
   "description": "A reminder for Muslims to ask for Allah's forgiveness.",
-  "version": "0.1.0",
-  "version_name": "0.1.0 Alpha",
+  "version": "0.1.1",
+  "version_name": "0.1.1 Alpha",
   "author": "mohamednow25@gmail.com",
   "minimum_chrome_version": "47",
   "incognito": "not_allowed",
@@ -19,17 +19,17 @@
     }
   ],
   "icons": {
-    "16": "icons/Green16.png",
-    "32": "icons/Green32.png",
-    "48": "icons/Green48.png",
-    "128": "icons/Green128.png"
+    "16": "icons/Green/16.png",
+    "32": "icons/Green/32.png",
+    "48": "icons/Green/48.png",
+    "128": "icons/Green/128.png"
   },
   "action": {
     "default_icon": {
-      "16": "icons/Green16.png",
-      "32": "icons/Green32.png",
-      "48": "icons/Green48.png",
-      "128": "icons/Green128.png"
+      "16": "icons/Green/16.png",
+      "32": "icons/Green/32.png",
+      "48": "icons/Green/48.png",
+      "128": "icons/Green/128.png"
     },
     "default_popup": "popup.html"
   }
