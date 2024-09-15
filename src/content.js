@@ -17,7 +17,7 @@ function get_message_data() {
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
-function createPopup(color) {
+function createPopup(theme) {
   const existingPopup = document.getElementById("Zekr");
   if (existingPopup) {
     existingPopup.remove();
@@ -29,30 +29,39 @@ function createPopup(color) {
 
   var css_code = `#04B045`;
 
-  if (color === "pink") {
+  if (theme === "pink") {
     css_code = `#E897B4`;
   }
 
   popup.style = `
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    align-items: start; /* compare later */
+
     position: fixed;
     bottom: 2%;
     right: 1%;
+    
     padding: 0.5rem 1rem;
+    
     font-family: "Lalezar", system-ui !important;
     font-weight: 600 !important;
+    
     color: #FFFFFF;
     background-color: ${css_code};
+    
     border-radius: 1.5rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    
     font-size: 1.3rem !important;
+    
     max-width: 90%;
-    flex-direction: column;
-    align-items: start;
-    z-index: 2147483647;
+    
+    z-index: 2147483647; /* Always on top */
     cursor: pointer;
+
     transform: translateY(100%);
     animation: slide-up 0.5s ease-out forwards;
   `;

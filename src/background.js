@@ -1,4 +1,4 @@
-function changeIconTo(color) {
+function changeIconTo(theme) {
   const icons = {
     green: {
       16: "icons/Green16.png",
@@ -14,20 +14,20 @@ function changeIconTo(color) {
     },
   };
 
-  const selectedIcons = icons[color];
+  const selectedIcons = icons[theme];
 
   if (selectedIcons) {
     chrome.action.setIcon({
       path: selectedIcons,
     });
   } else {
-    console.error("Invalid color for icon change: ", color);
+    console.error("Invalid theme for icon change: ", theme);
   }
 }
 
 const defaultSettings = {
   interval: 300000,
-  color: "green",
+  theme: "green",
 };
 
 function loadSettings(callback) {
@@ -45,13 +45,13 @@ let popupInterval;
 
 function triggerPopup() {
   chrome.storage.local.get("settings", (data) => {
-    const settings = data.settings || { color: "green" };
+    const settings = data.settings || { theme: "green" };
 
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       try {
         const activeTab = tabs[0];
         let actionType =
-          settings.color === "green" ? "createPopupGreen" : "createPopupPink";
+          settings.theme === "green" ? "createPopupGreen" : "createPopupPink";
 
         chrome.tabs.sendMessage(activeTab.id, {
           action: actionType,
@@ -69,7 +69,7 @@ function setupInterval(interval) {
 }
 
 loadSettings((settings) => {
-  changeIconTo(settings.color);
+  changeIconTo(settings.theme);
   setupInterval(settings.interval);
 });
 
@@ -77,7 +77,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "updateSettings") {
     const settings = request.settings;
     saveSettings(settings);
-    changeIconTo(settings.color);
+    changeIconTo(settings.theme);
     setupInterval(settings.interval);
   }
 });

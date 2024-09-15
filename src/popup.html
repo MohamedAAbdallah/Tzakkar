@@ -13,15 +13,21 @@
   <body>
     <h3>Settings</h3>
     <label for="interval">Popup Interval (ms):</label>
-    <input type="number" id="interval" min="10000" /><br />
+    <input
+      type="range"
+      id="interval"
+      min="10000"
+      max="600000"
+      step="10000"
+      value="10000"
+      required
+    /><br />
 
-    <label for="color">Icon Color:</label>
-    <select id="color">
+    <label for="theme">Icon Theme:</label>
+    <select id="theme" required>
       <option value="pink">Pink</option>
       <option value="green">Green</option></select
     ><br /><br />
-
-    <button id="saveSettings">Save</button>
 
     <script src="popup.js"></script>
   </body>
