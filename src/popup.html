@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Settings</title>
+    <title>Tzakkar</title>
     <style>
       body {
-        font-family: "Lalezar", system-ui;
-        padding: 10px;
+        font-family: "Lalezar", sans-serif;
+        font-size: 20px;
+        margin: 0;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(to bottom, #E897B4, #2ebf91);;
+        color: #fff;
         width: 200px;
+        height: 200px;
+      }
+
+      input {
+        width: 80%;
       }
     </style>
   </head>
   <body>
     <h3>Settings</h3>
-    <label for="interval">Popup Interval (ms):</label>
+    <label for="interval">Remind me every:</label>
     <input
       type="range"
       id="interval"
