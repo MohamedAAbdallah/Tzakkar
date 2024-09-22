@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.local.set({ settings }, () => {
       chrome.runtime.sendMessage({ action: "updateSettings", settings });
     });
+    intervalminutes = Math.round(settings.interval / 1000 / 60);
+    document.getElementById("counter").innerText = `${intervalminutes} minutes`;
   }
 
   document.getElementById("interval").addEventListener("input", () => {

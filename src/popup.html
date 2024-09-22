@@ -13,7 +13,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: linear-gradient(to bottom, #E897B4, #2ebf91);;
+        background: linear-gradient(to bottom, #e897b4, #2ebf91);
         color: #fff;
         width: 200px;
         height: 200px;
@@ -26,17 +26,19 @@
   </head>
   <body>
     <h3>Settings</h3>
-    <label for="interval">Remind me every:</label>
-    <input
-      type="range"
-      id="interval"
-      min="10000"
-      max="600000"
-      step="10000"
-      value="10000"
-      required
-    /><br />
-
+    <label for="Slider">Remind me every:</label>
+    <div id="Slider">
+      <label id="counter" for="interval">0.1 Min</label>
+      <input
+        type="range"
+        id="interval"
+        min="60000"
+        max="600000"
+        step="60000"
+        value="10000"
+        required
+      /><br />
+    </div>
     <label for="theme">Icon Theme:</label>
     <select id="theme" required>
       <option value="pink">Pink</option>
