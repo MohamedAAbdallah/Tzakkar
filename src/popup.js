@@ -1,9 +1,3 @@
-// TODO: Implement checkboxes for theme buttons
-// TODO: implement palcement for popup
-// TODO: New UI
-// TODO: new data from rana
-// TODO: Test
-
 document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.local.get("settings", (data) => {
     const settings = data.settings || {};
