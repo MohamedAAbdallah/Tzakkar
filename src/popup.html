@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tzakkar</title>
+    <link rel="stylesheet" type="text/css" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3>Tzakkar</h3>
+      <label for="interval">Remind me every:</label>
+      <div id="slider">
+        <label id="counter" for="interval">0.1 minutes</label>
+        <input
+          type="range"
+          id="interval"
+          min="60000"
+          max="600000"
+          step="60000"
+          value="10000"
+          required
+        /><br />
+      </div>
+      <label>Icon Theme:</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="theme" value="green" checked />
+          <img src="imgs/icons/green/128.png" alt="Green" />
+        </label>
+
+        <label>
+          <input type="radio" name="theme" value="pink" />
+          <img src="imgs/icons/pink/128.png" alt="pink" />
+        </label>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
