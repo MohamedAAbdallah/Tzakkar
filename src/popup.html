@@ -20,11 +20,18 @@
           required
         /><br />
       </div>
-      <label for="theme">Icon Theme:</label>
-      <select id="theme" required>
-        <option value="pink">Pink</option>
-        <option value="green">Green</option>
-      </select>
+      <label>Icon Theme:</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="theme" value="green" />
+          <img src="imgs/icons/green/128.png" alt="Green" />
+        </label>
+
+        <label>
+          <input type="radio" name="theme" value="pink" />
+          <img src="imgs/icons/pink/128.png" alt="pink" />
+        </label>
+      </div>
     </div>
 
     <script src="popup.js"></script>
