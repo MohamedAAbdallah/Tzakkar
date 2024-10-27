@@ -1,28 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const intervalInput = document.getElementById("interval");
+  const themeRadioButtons = document.querySelectorAll("input[name='theme']");
+  const counterLabel = document.getElementById("counter");
+
   chrome.storage.local.get("settings", (data) => {
     const settings = data.settings || {};
-    document.getElementById("interval").value = settings.interval || 300000;
-    document.getElementById("theme").value = settings.theme || "green";
+    intervalInput.value = settings.interval || 300000;
+
+    themeRadioButtons.forEach((radio) => {
+      if (radio.value === settings.theme) {
+        radio.checked = true;
+      }
+    });
+
+    counterLabel.innerText = `${(parseInt(intervalInput.value, 10) / 60000).toFixed(1)} minutes`;
   });
 
   function saveSettings() {
+    const selectedTheme = Array.from(themeRadioButtons).find(radio => radio.checked)?.value;
     const settings = {
-      interval: parseInt(document.getElementById("interval").value, 10),
-      theme: document.getElementById("theme").value,
+      interval: parseInt(intervalInput.value, 10),
+      theme: selectedTheme,
     };
 
     chrome.storage.local.set({ settings }, () => {
       chrome.runtime.sendMessage({ action: "updateSettings", settings });
     });
-    intervalminutes = Math.round(settings.interval / 1000 / 60);
-    document.getElementById("counter").innerText = `${intervalminutes} minutes`;
+    counterLabel.innerText = `${(parseInt(intervalInput.value, 10) / 60000).toFixed(1)} minutes`;
   }
 
-  document.getElementById("interval").addEventListener("input", () => {
-    saveSettings();
-  });
-
-  document.getElementById("theme").addEventListener("change", () => {
-    saveSettings();
-  });
+  intervalInput.addEventListener("input", saveSettings);
+  themeRadioButtons.forEach((radio) => radio.addEventListener("change", saveSettings));
 });
