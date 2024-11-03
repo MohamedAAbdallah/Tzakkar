@@ -7,7 +7,7 @@
   "author": "mohamednow25@gmail.com",
   "minimum_chrome_version": "47",
   "incognito": "not_allowed",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "scripting", "storage", "notifications"],
   "background": {
     "service_worker": "background.js"
   },
