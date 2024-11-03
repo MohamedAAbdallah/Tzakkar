@@ -1,30 +1,3 @@
-function changeIconTo(theme) {
-  const icons = {
-    green: {
-      16: "imgs/icons/Green/16.png",
-      32: "imgs/icons/Green/32.png",
-      48: "imgs/icons/Green/48.png",
-      128: "imgs/icons/Green/128.png",
-    },
-    pink: {
-      16: "imgs/icons/Pink/16.png",
-      32: "imgs/icons/Pink/32.png",
-      48: "imgs/icons/Pink/48.png",
-      128: "imgs/icons/Pink/128.png",
-    },
-  };
-
-  const selectedIcons = icons[theme];
-
-  if (selectedIcons) {
-    chrome.action.setIcon({
-      path: selectedIcons,
-    });
-  } else {
-    console.error("Invalid theme for icon change: ", theme);
-  }
-}
-
 const defaultSettings = {
   interval: 300000,
   theme: "green",
@@ -41,42 +14,41 @@ function saveSettings(settings) {
   chrome.storage.local.set({ settings });
 }
 
-let popupInterval;
-
-function triggerPopup() {
-  chrome.storage.local.get("settings", (data) => {
-    const settings = data.settings || { theme: "green" };
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      try {
-        const activeTab = tabs[0];
-
-        chrome.tabs.sendMessage(activeTab.id, {
-          action: "createPopup",
-          settings: settings,
-        });
-      } catch (error) {
-        console.error("Tzakkar | Error sending message to active tab: ", error);
-      }
-    });
-  });
-}
-
-function setupInterval(interval) {
-  clearInterval(popupInterval);
-  popupInterval = setInterval(triggerPopup, interval);
-}
-
-loadSettings((settings) => {
-  changeIconTo(settings.theme);
-  setupInterval(settings.interval);
-});
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "updateSettings") {
     const settings = request.settings;
     saveSettings(settings);
-    changeIconTo(settings.theme);
-    setupInterval(settings.interval);
   }
 });
+
+function getMessageData() {
+  const messages = [
+    "الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد",
+    "استغفر الله واتوب اليه",
+    "سبحان الله وبحمده",
+    "لا اله الا الله",
+    "الحمد لله",
+    "الله اكبر",
+    "سبحان الله",
+    "اللهم اني اسالك العفو والعافية",
+    "اللهم اني اسالك العلم النافع",
+    "اللهم اني اسالك الهدى والتقى والعفاف والغنى",
+    "اللهم اني اسالك الجنة واعوذ بك من النار",
+    "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
+  ];
+  return messages[Math.floor(Math.random() * messages.length)];
+}
+
+function notification() {
+  const message = getMessageData();
+  chrome.notifications.create({
+    type: "basic",
+    iconUrl: "imgs/icons/green/128.png",
+    title: message,
+    message: "",
+    priority: 2,
+  });
+}
+
+setInterval(notification, 600000); // 10 minutes
