@@ -3,9 +3,11 @@ const defaultSettings = {
   theme: "green",
 };
 
+let settings = defaultSettings;
+
 function loadSettings(callback) {
   chrome.storage.local.get("settings", (data) => {
-    const settings = data.settings || defaultSettings;
+    settings = data.settings || defaultSettings;
     callback(settings);
   });
 }
@@ -16,8 +18,17 @@ function saveSettings(settings) {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "updateSettings") {
-    const settings = request.settings;
-    saveSettings(settings);
+    saveSettings(request.settings);
+  }
+});
+
+chrome.runtime.onConnect.addListener((port) => {
+  if (port.name === "popup") {
+    console.log("Popup opened");
+    settings = port.onDisconnect.addListener(() => {
+      console.log("Popup has been closed");
+      chrome.runtime.reload();
+    });
   }
 });
 
@@ -51,4 +62,6 @@ function notification() {
   });
 }
 
-setInterval(notification, 600000); // 10 minutes
+loadSettings((settings) => {
+  setInterval(notification, settings.interval);
+});

@@ -26,6 +26,8 @@ function changeIconTo(theme) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const port = chrome.runtime.connect({ name: "popup" });
+
   const intervalInput = document.getElementById("interval");
   const themeRadioButtons = document.querySelectorAll("input[name='theme']");
   const counterLabel = document.getElementById("counter");
