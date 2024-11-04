@@ -1,9 +1,11 @@
 const defaultSettings = {
   interval: 300000,
   theme: "green",
+  enabled: true,
 };
 
 let settings = defaultSettings;
+let notificationInterval;
 
 function loadSettings(callback) {
   chrome.storage.local.get("settings", (data) => {
@@ -12,20 +14,22 @@ function loadSettings(callback) {
   });
 }
 
-function saveSettings(settings) {
-  chrome.storage.local.set({ settings });
+function saveSettings(newSettings) {
+  chrome.storage.local.set({ settings: newSettings });
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "updateSettings") {
     saveSettings(request.settings);
+    settings = request.settings;
+    startNotificationInterval();
   }
 });
 
 chrome.runtime.onConnect.addListener((port) => {
   if (port.name === "popup") {
     console.log("Popup opened");
-    settings = port.onDisconnect.addListener(() => {
+    port.onDisconnect.addListener(() => {
       console.log("Popup has been closed");
       chrome.runtime.reload();
     });
@@ -35,17 +39,17 @@ chrome.runtime.onConnect.addListener((port) => {
 function getMessageData() {
   const messages = [
     "الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد",
-    "استغفر الله واتوب اليه",
+    "استغفر الله وأتوب إليه",
     "سبحان الله وبحمده",
-    "لا اله الا الله",
+    "لا إله إلا الله",
     "الحمد لله",
-    "الله اكبر",
+    "الله أكبر",
     "سبحان الله",
-    "اللهم اني اسالك العفو والعافية",
-    "اللهم اني اسالك العلم النافع",
-    "اللهم اني اسالك الهدى والتقى والعفاف والغنى",
-    "اللهم اني اسالك الجنة واعوذ بك من النار",
-    "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    "اللهم إني أسألك العفو والعافية",
+    "اللهم إني أسألك العلم النافع",
+    "اللهم إني أسألك الهدى والتقى والعفاف والغنى",
+    "اللهم إني أسألك الجنة وأعوذ بك من النار",
+    "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
     "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
   ];
   return messages[Math.floor(Math.random() * messages.length)];
@@ -55,13 +59,22 @@ function notification() {
   const message = getMessageData();
   chrome.notifications.create({
     type: "basic",
-    iconUrl: "imgs/icons/green/128.png",
+    iconUrl: `imgs/icons/${settings.theme}/128.png`,
     title: message,
     message: "",
     priority: 2,
   });
 }
 
-loadSettings((settings) => {
-  setInterval(notification, settings.interval);
+function startNotificationInterval() {
+  if (notificationInterval) {
+    clearInterval(notificationInterval);
+  }
+  if (settings.enabled) {
+    notificationInterval = setInterval(notification, settings.interval);
+  }
+}
+
+loadSettings(() => {
+  startNotificationInterval();
 });

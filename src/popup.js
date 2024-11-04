@@ -29,11 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const intervalInput = document.getElementById("interval");
   const themeRadioButtons = document.querySelectorAll("input[name='theme']");
   const counterLabel = document.getElementById("counter");
+  const enabledCheckbox = document.getElementById("enabled"); // Added for on/off switch
 
   chrome.storage.local.get("settings", (data) => {
     const settings = data.settings || {
       interval: 300000,
       theme: "green",
+      enabled: true, // Default to true
     };
 
     intervalInput.value = settings.interval;
@@ -43,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         radio.checked = true;
       }
     });
+
+    if (enabledCheckbox) {
+      enabledCheckbox.checked = settings.enabled;
+    }
 
     counterLabel.innerText = `${(settings.interval / 60000).toFixed(
       1
@@ -63,9 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const enabledValue = enabledCheckbox ? enabledCheckbox.checked : true;
+
     const settings = {
       interval: intervalValue,
       theme: selectedTheme,
+      enabled: enabledValue,
     };
 
     chrome.storage.local.set({ settings }, () => {
@@ -81,4 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   themeRadioButtons.forEach((radio) => {
     radio.addEventListener("change", saveSettings);
   });
+  if (enabledCheckbox) {
+    enabledCheckbox.addEventListener("change", saveSettings);
+  }
 });
