@@ -14,14 +14,12 @@ function changeIconTo(theme) {
     },
   };
 
-  const selectedIcons = icons[theme];
+  const selectedIcons = icons[theme.toLowerCase()];
 
   if (selectedIcons) {
-    chrome.action.setIcon({
-      path: selectedIcons,
-    });
+    chrome.action.setIcon({ path: selectedIcons });
   } else {
-    console.error("Invalid theme for icon change: ", theme);
+    console.error("Invalid theme for icon change:", theme);
   }
 }
 
@@ -33,8 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const counterLabel = document.getElementById("counter");
 
   chrome.storage.local.get("settings", (data) => {
-    const settings = data.settings || {};
-    intervalInput.value = settings.interval || 300000;
+    const settings = data.settings || {
+      interval: 300000,
+      theme: "green",
+    };
+
+    intervalInput.value = settings.interval;
 
     themeRadioButtons.forEach((radio) => {
       if (radio.value === settings.theme) {
@@ -42,30 +44,41 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    counterLabel.innerText = `${(
-      parseInt(intervalInput.value, 10) / 60000
-    ).toFixed(1)} minutes`;
+    counterLabel.innerText = `${(settings.interval / 60000).toFixed(
+      1
+    )} minutes`;
+
+    changeIconTo(settings.theme);
   });
 
   function saveSettings() {
-    const selectedTheme = Array.from(themeRadioButtons).find(
-      (radio) => radio.checked
-    )?.value;
+    const selectedTheme =
+      Array.from(themeRadioButtons).find((radio) => radio.checked)?.value ||
+      "green";
+
+    const intervalValue = parseInt(intervalInput.value, 10);
+
+    if (isNaN(intervalValue) || intervalValue <= 0) {
+      console.error("Invalid interval value:", intervalInput.value);
+      return;
+    }
+
     const settings = {
-      interval: parseInt(intervalInput.value, 10),
+      interval: intervalValue,
       theme: selectedTheme,
     };
 
     chrome.storage.local.set({ settings }, () => {
       chrome.runtime.sendMessage({ action: "updateSettings", settings });
+
+      changeIconTo(selectedTheme);
     });
-    counterLabel.innerText = `${(
-      parseInt(intervalInput.value, 10) / 60000
-    ).toFixed(1)} minutes`;
+
+    counterLabel.innerText = `${(intervalValue / 60000).toFixed(1)} minutes`;
   }
 
   intervalInput.addEventListener("input", saveSettings);
-  themeRadioButtons.forEach((radio) =>
-    radio.addEventListener("change", saveSettings)
-  );
+  themeRadioButtons.forEach((radio) => {
+    radio.addEventListener("change", saveSettings);
+  });
 });
