@@ -1,82 +1,80 @@
-function changeIconTo(theme) {
-  const icons = {
-    green: {
-      16: "imgs/icons/Green/16.png",
-      32: "imgs/icons/Green/32.png",
-      48: "imgs/icons/Green/48.png",
-      128: "imgs/icons/Green/128.png",
-    },
-    pink: {
-      16: "imgs/icons/Pink/16.png",
-      32: "imgs/icons/Pink/32.png",
-      48: "imgs/icons/Pink/48.png",
-      128: "imgs/icons/Pink/128.png",
-    },
-  };
-
-  const selectedIcons = icons[theme];
-
-  if (selectedIcons) {
-    chrome.action.setIcon({
-      path: selectedIcons,
-    });
-  } else {
-    console.error("Invalid theme for icon change: ", theme);
-  }
-}
-
 const defaultSettings = {
   interval: 300000,
   theme: "green",
+  enabled: true,
 };
+
+let settings = defaultSettings;
+let notificationInterval;
 
 function loadSettings(callback) {
   chrome.storage.local.get("settings", (data) => {
-    const settings = data.settings || defaultSettings;
+    settings = data.settings || defaultSettings;
     callback(settings);
   });
 }
 
-function saveSettings(settings) {
-  chrome.storage.local.set({ settings });
+function saveSettings(newSettings) {
+  chrome.storage.local.set({ settings: newSettings });
 }
-
-let popupInterval;
-
-function triggerPopup() {
-  chrome.storage.local.get("settings", (data) => {
-    const settings = data.settings || { theme: "green" };
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      try {
-        const activeTab = tabs[0];
-
-        chrome.tabs.sendMessage(activeTab.id, {
-          action: "createPopup",
-          settings: settings,
-        });
-      } catch (error) {
-        console.error("Tzakkar | Error sending message to active tab: ", error);
-      }
-    });
-  });
-}
-
-function setupInterval(interval) {
-  clearInterval(popupInterval);
-  popupInterval = setInterval(triggerPopup, interval);
-}
-
-loadSettings((settings) => {
-  changeIconTo(settings.theme);
-  setupInterval(settings.interval);
-});
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "updateSettings") {
-    const settings = request.settings;
-    saveSettings(settings);
-    changeIconTo(settings.theme);
-    setupInterval(settings.interval);
+    saveSettings(request.settings);
+    settings = request.settings;
+    startNotificationInterval();
   }
+});
+
+chrome.runtime.onConnect.addListener((port) => {
+  if (port.name === "popup") {
+    console.log("Popup opened");
+    port.onDisconnect.addListener(() => {
+      console.log("Popup has been closed");
+      chrome.runtime.reload();
+    });
+  }
+});
+
+function getMessageData() {
+  const messages = [
+    "الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد",
+    "استغفر الله وأتوب إليه",
+    "سبحان الله وبحمده",
+    "لا إله إلا الله",
+    "الحمد لله",
+    "الله أكبر",
+    "سبحان الله",
+    "اللهم إني أسألك العفو والعافية",
+    "اللهم إني أسألك العلم النافع",
+    "اللهم إني أسألك الهدى والتقى والعفاف والغنى",
+    "اللهم إني أسألك الجنة وأعوذ بك من النار",
+    "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
+  ];
+  return messages[Math.floor(Math.random() * messages.length)];
+}
+
+function notification() {
+  const message = getMessageData();
+  chrome.notifications.create({
+    type: "basic",
+    iconUrl: `imgs/icons/${settings.theme}/128.png`,
+    title: message,
+    message: "",
+    priority: 2,
+  });
+}
+
+function startNotificationInterval() {
+  if (notificationInterval) {
+    clearInterval(notificationInterval);
+  }
+  if (settings.enabled) {
+    notificationInterval = setInterval(notification, settings.interval);
+  }
+}
+
+loadSettings(() => {
+  startNotificationInterval();
 });
