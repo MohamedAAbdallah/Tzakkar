@@ -37,41 +37,35 @@ chrome.runtime.onConnect.addListener((port) => {
   }
 });
 
-function getMessageData() {
-  const messages = {
-    ar: [
-      "الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد",
-      "استغفر الله وأتوب إليه",
-      "سبحان الله وبحمده",
-      "لا إله إلا الله",
-      "الحمد لله",
-      "الله أكبر",
-      "سبحان الله",
-      "اللهم إني أسألك العفو والعافية",
-      "اللهم إني أسألك العلم النافع",
-      "اللهم إني أسألك الهدى والتقى والعفاف والغنى",
-      "اللهم إني أسألك الجنة وأعوذ بك من النار",
-      "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
-      "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
-    ],
-    en: [
-      "There is no deity but Allah",
-      "All praise is due to Allah",
-    ],
-  };
-
-  const langMessages = messages[settings.language] || messages["ar"];
-  return langMessages[Math.floor(Math.random() * langMessages.length)];
+function getMessageData(callback) {
+  fetch(chrome.runtime.getURL(`lang/${settings.language}.json`))
+    .then((response) => response.json())
+    .then((messages) => {
+      if (messages.length === 0) {
+        callback("No messages available");
+      } else {
+        const message = messages[Math.floor(Math.random() * messages.length)];
+        callback(message);
+      }
+    })
+    .catch((error) => {
+      console.error(
+        `Error loading messages for language ${settings.language}:`,
+        error
+      );
+      callback("Default message in case of error");
+    });
 }
 
 function notification() {
-  const message = getMessageData();
-  chrome.notifications.create({
-    type: "basic",
-    iconUrl: `imgs/icons/${settings.theme}/128.png`,
-    title: message,
-    message: "",
-    priority: 2,
+  getMessageData((message) => {
+    chrome.notifications.create({
+      type: "basic",
+      iconUrl: `imgs/icons/${settings.theme}/128.png`,
+      title: message,
+      message: "",
+      priority: 2,
+    });
   });
 }
 
