@@ -19,7 +19,7 @@ function saveSettings(newSettings) {
   chrome.storage.local.set({ settings: newSettings });
 }
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request) => {
   if (request.action === "updateSettings") {
     saveSettings(request.settings);
     settings = request.settings;
