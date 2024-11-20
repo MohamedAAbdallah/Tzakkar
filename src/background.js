@@ -2,6 +2,7 @@ const defaultSettings = {
   interval: 300000,
   theme: "green",
   enabled: true,
+  language: "ar",
 };
 
 let settings = defaultSettings;
@@ -36,33 +37,35 @@ chrome.runtime.onConnect.addListener((port) => {
   }
 });
 
-function getMessageData() {
-  const messages = [
-    "الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد",
-    "استغفر الله وأتوب إليه",
-    "سبحان الله وبحمده",
-    "لا إله إلا الله",
-    "الحمد لله",
-    "الله أكبر",
-    "سبحان الله",
-    "اللهم إني أسألك العفو والعافية",
-    "اللهم إني أسألك العلم النافع",
-    "اللهم إني أسألك الهدى والتقى والعفاف والغنى",
-    "اللهم إني أسألك الجنة وأعوذ بك من النار",
-    "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
-    "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
-  ];
-  return messages[Math.floor(Math.random() * messages.length)];
+function getMessageData(callback) {
+  fetch(chrome.runtime.getURL(`lang/${settings.language}.json`))
+    .then((response) => response.json())
+    .then((messages) => {
+      if (messages.length === 0) {
+        callback("No messages available");
+      } else {
+        const message = messages[Math.floor(Math.random() * messages.length)];
+        callback(message);
+      }
+    })
+    .catch((error) => {
+      console.error(
+        `Error loading messages for language ${settings.language}:`,
+        error
+      );
+      callback("Default message in case of error");
+    });
 }
 
 function notification() {
-  const message = getMessageData();
-  chrome.notifications.create({
-    type: "basic",
-    iconUrl: `imgs/icons/${settings.theme}/128.png`,
-    title: message,
-    message: "",
-    priority: 2,
+  getMessageData((message) => {
+    chrome.notifications.create({
+      type: "basic",
+      iconUrl: `imgs/icons/${settings.theme}/128.png`,
+      title: message,
+      message: "",
+      priority: 2,
+    });
   });
 }
 
@@ -75,6 +78,32 @@ function startNotificationInterval() {
   }
 }
 
+function changeIconTo(theme) {
+  const icons = {
+    green: {
+      16: "imgs/icons/Green/16.png",
+      32: "imgs/icons/Green/32.png",
+      48: "imgs/icons/Green/48.png",
+      128: "imgs/icons/Green/128.png",
+    },
+    pink: {
+      16: "imgs/icons/Pink/16.png",
+      32: "imgs/icons/Pink/32.png",
+      48: "imgs/icons/Pink/48.png",
+      128: "imgs/icons/Pink/128.png",
+    },
+  };
+
+  const selectedIcons = icons[theme.toLowerCase()];
+
+  if (selectedIcons) {
+    chrome.action.setIcon({ path: selectedIcons });
+  } else {
+    console.error("Invalid theme for icon change:", theme);
+  }
+}
+
 loadSettings(() => {
   startNotificationInterval();
+  changeIconTo(settings.theme);
 });
