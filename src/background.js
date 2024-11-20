@@ -78,6 +78,32 @@ function startNotificationInterval() {
   }
 }
 
+function changeIconTo(theme) {
+  const icons = {
+    green: {
+      16: "imgs/icons/Green/16.png",
+      32: "imgs/icons/Green/32.png",
+      48: "imgs/icons/Green/48.png",
+      128: "imgs/icons/Green/128.png",
+    },
+    pink: {
+      16: "imgs/icons/Pink/16.png",
+      32: "imgs/icons/Pink/32.png",
+      48: "imgs/icons/Pink/48.png",
+      128: "imgs/icons/Pink/128.png",
+    },
+  };
+
+  const selectedIcons = icons[theme.toLowerCase()];
+
+  if (selectedIcons) {
+    chrome.action.setIcon({ path: selectedIcons });
+  } else {
+    console.error("Invalid theme for icon change:", theme);
+  }
+}
+
 loadSettings(() => {
   startNotificationInterval();
+  changeIconTo(settings.theme);
 });
